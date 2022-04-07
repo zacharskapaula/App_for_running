@@ -11,5 +11,10 @@ namespace App6.Views
         {
             InitializeComponent();
         }
+
+        private async void startButton_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new RunningPage());
+        }
     }
 }
