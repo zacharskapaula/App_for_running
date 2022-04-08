@@ -1,6 +1,8 @@
 ﻿using System;
 using System.ComponentModel;
+using Xamarin.Essentials;
 using Xamarin.Forms;
+using Xamarin.Forms.Maps;
 using Xamarin.Forms.Xaml;
 
 namespace App6.Views
@@ -15,6 +17,10 @@ namespace App6.Views
         private async void startButton_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new RunningPage());
+
         }
+
+       
+
     }
 }

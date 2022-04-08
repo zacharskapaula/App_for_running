@@ -8,10 +8,11 @@
             <Label Text="Welcome to RunningApp! Start your traning now!"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
+            <Button Text="Start" Clicked="Button_Clicked"/>
             <mymap:Map x:Name="mylocalMap" 
                            HorizontalOptions="FillAndExpand"
                            VerticalOptions="FillAndExpand"
-                           ></mymap:Map>
+                           IsShowingUser="True"></mymap:Map>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
