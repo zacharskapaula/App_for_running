@@ -36,10 +36,15 @@ namespace App6.Views
             welcomeLabel.IsVisible = false;
             timerLabel.IsVisible = true;
             distanceLabel.IsVisible = true;
-
+            stopButton.IsVisible = true;
+            stopButton.IsVisible = false;
             BindingContext = new TimerModel();
         }
 
+        private void Button_Clicked_1(object sender, EventArgs e)
+        {
+
+        }
     }
 
 
