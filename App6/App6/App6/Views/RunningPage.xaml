@@ -2,10 +2,27 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
               xmlns:mymap="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
-             x:Class="App6.Views.RunningPage">
+             x:Class="App6.Views.RunningPage"
+             Title="Label Demo - XAML">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to RunningApp! Start your traning now!"
+            <Label x:Name="distanceLabel" Text="Distance" IsVisible="false" VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+            <Label x:Name="time1Label" Text="time" IsVisible="false" VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand"/>
+            <Label x:Name="timerLabel" LineBreakMode="WordWrap" VerticalOptions="CenterAndExpand" IsVisible="false"
+                HorizontalOptions="CenterAndExpand">
+                <Label.FormattedText>
+                <FormattedString>
+                    <Span Text="{Binding StopWatchHours}"/>
+                    <Span Text=":" />
+                    <Span Text="{Binding StopWatchMinutes}" />
+                    <Span Text=":" />
+                        <Span Text="{Binding StopWatchSeconds}" />
+                    </FormattedString>
+            </Label.FormattedText>
+            </Label>
+            <Label x:Name="welcomeLabel" Text="Welcome to RunningApp! Start your traning now!"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
             <Button Text="Start" Clicked="Button_Clicked"/>
