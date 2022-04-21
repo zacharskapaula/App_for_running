@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="App6.Views.AboutPage"
              xmlns:vm="clr-namespace:App6.ViewModels"
-             Title="{Binding Title}">
+             Title="Main Page">
 
     <ContentPage.BindingContext>
         <vm:AboutViewModel />

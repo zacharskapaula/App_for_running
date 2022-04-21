@@ -3,30 +3,36 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
               xmlns:mymap="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
              x:Class="App6.Views.RunningPage"
-             Title="Label Demo - XAML">
+             Title="Start running">
     <ContentPage.Content>
         <StackLayout>
+            <Label x:Name="timerLabel"  LineBreakMode="WordWrap" VerticalOptions="CenterAndExpand" IsVisible="false"
+                HorizontalOptions="CenterAndExpand" FontSize="Medium">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="{Binding HoursCounter}"/>
+                        <Span Text=":" />
+                        <Span Text="{Binding MinutesCounter}" />
+                        <Span Text=":" />
+                        <Span Text="{Binding SecondsCounter}" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
             <Label x:Name="distanceLabel" Text="Distance" IsVisible="false" VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-            <Label x:Name="time1Label" Text="time" IsVisible="false" VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand"/>
-            <Label x:Name="timerLabel" LineBreakMode="WordWrap" VerticalOptions="CenterAndExpand" IsVisible="false"
-                HorizontalOptions="CenterAndExpand">
+                HorizontalOptions="CenterAndExpand" >
                 <Label.FormattedText>
                 <FormattedString>
-                    <Span Text="{Binding StopWatchHours}"/>
-                    <Span Text=":" />
-                    <Span Text="{Binding StopWatchMinutes}" />
-                    <Span Text=":" />
-                        <Span Text="{Binding StopWatchSeconds}" />
+                        <Span Text="{Binding Distance}"/>
                     </FormattedString>
-            </Label.FormattedText>
+                </Label.FormattedText>
             </Label>
+                <Label x:Name="finishLabel" Text="Trening zakończył się!" IsVisible="false" VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" FontSize="Large"/>
             <Label x:Name="welcomeLabel" Text="Welcome to RunningApp! Start your traning now!"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
-            <Button x:Name="stopButton" Text="Stop" Clicked="Button_Clicked_1" IsVisible="false"/>
-            <Button x:Name="startButton" Text="Start" Clicked="Button_Clicked"/>
+            <Button x:Name="stopButton" Text="Stop" Clicked="StopButton_Clicked" IsVisible="false"/>
+            <Button x:Name="startButton" Text="Start" Clicked="StartButton_Clicked"/>
             <mymap:Map x:Name="mylocalMap" 
                            HorizontalOptions="FillAndExpand"
                            VerticalOptions="FillAndExpand"
