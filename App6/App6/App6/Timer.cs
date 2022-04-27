@@ -8,14 +8,21 @@ using System.Timers;
 
 namespace App6
 {
-    public class TimerModel : INotifyPropertyChanged
+    public class Timer : INotifyPropertyChanged
     {
         Stopwatch stopwatch = new Stopwatch();
+<<<<<<< Updated upstream:App6/App6/App6/TimerModel.cs
         private Timer time = new Timer();
         //private bool timerRunning;
         private string _stopWatchHours;
 
         public string StopWatchHours
+=======
+        private System.Timers.Timer time = new System.Timers.Timer();
+        
+        private string _hours;
+        public string HoursCounter
+>>>>>>> Stashed changes:App6/App6/App6/Timer.cs
         {
             get { return _stopWatchHours; }
             set
@@ -57,7 +64,7 @@ namespace App6
             }
         }
 
-        public TimerModel()
+        public Timer()
         {
             stopwatch.Start();
             StopWatchHours = stopwatch.Elapsed.Hours.ToString();

@@ -10,20 +10,28 @@ namespace App6.ViewModels
     public class ItemDetailViewModel : BaseViewModel
     {
         private string itemId;
-        private string text;
-        private string description;
+        private string name;
+        private int age;
+        private int height;
+
         public string Id { get; set; }
 
-        public string Text
+        public string Name
         {
-            get => text;
-            set => SetProperty(ref text, value);
+            get => name;
+            set => SetProperty(ref name, value);
         }
 
-        public string Description
+        public int Age
         {
-            get => description;
-            set => SetProperty(ref description, value);
+            get => age;
+            set => SetProperty(ref age, value);
+        }
+
+        public int Height
+        {
+            get => height;
+            set => SetProperty(ref height, value);
         }
 
         public string ItemId
@@ -45,8 +53,9 @@ namespace App6.ViewModels
             {
                 var item = await DataStore.GetItemAsync(itemId);
                 Id = item.Id;
-                Text = item.Text;
-                Description = item.Description;
+                Name = item.Name;
+                Age = item.Age;
+                Height = item.Height;
             }
             catch (Exception)
             {
