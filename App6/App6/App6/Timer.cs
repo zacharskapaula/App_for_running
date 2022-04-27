@@ -51,7 +51,7 @@ namespace App6
             {
                 _stopWatchSeconds = value;
                 OnPropertyChanged("StopWatchSeconds");
-            }
+            } 
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
