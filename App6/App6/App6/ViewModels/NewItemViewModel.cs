@@ -9,8 +9,10 @@ namespace App6.ViewModels
 {
     public class NewItemViewModel : BaseViewModel
     {
-        private string text;
-        private string description;
+        
+        private string name;
+        private int age;
+        private int height;
 
         public NewItemViewModel()
         {
@@ -22,21 +24,28 @@ namespace App6.ViewModels
 
         private bool ValidateSave()
         {
-            return !String.IsNullOrWhiteSpace(text)
-                && !String.IsNullOrWhiteSpace(description);
+            return !String.IsNullOrWhiteSpace(name);
+               // && !String.IsNullOrEmpty(age);
         }
 
-        public string Text
+        public string Name
         {
-            get => text;
-            set => SetProperty(ref text, value);
+            get => name;
+            set => SetProperty(ref name, value);
         }
 
-        public string Description
+        public int Age
         {
-            get => description;
-            set => SetProperty(ref description, value);
+            get => age;
+            set => SetProperty(ref age, value);
         }
+
+        public int Height
+        {
+            get => height;
+            set => SetProperty(ref height, value);
+        }
+
 
         public Command SaveCommand { get; }
         public Command CancelCommand { get; }
@@ -52,8 +61,9 @@ namespace App6.ViewModels
             Item newItem = new Item()
             {
                 Id = Guid.NewGuid().ToString(),
-                Text = Text,
-                Description = Description
+                Name = Name,
+                Age = Age,
+                Height = Height
             };
 
             await DataStore.AddItemAsync(newItem);
