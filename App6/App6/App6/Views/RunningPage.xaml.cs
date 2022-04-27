@@ -44,7 +44,7 @@ namespace App6.Views
             
 >>>>>>> Stashed changes
 
-            BindingContext = new TimerModel();
+            BindingContext = new Timer();
         }
 
 <<<<<<< Updated upstream
