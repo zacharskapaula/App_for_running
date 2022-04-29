@@ -36,23 +36,18 @@ namespace App6.Views
             welcomeLabel.IsVisible = false;
             timerLabel.IsVisible = true;
             distanceLabel.IsVisible = true;
-<<<<<<< Updated upstream
-=======
+
             stopButton.IsVisible = true;
             startButton.IsVisible = false;
             BindingContext = new Timer();
-<<<<<<< Updated upstream
-            
->>>>>>> Stashed changes
-=======
-            BindingContext = new Distance();
->>>>>>> Stashed changes
 
-            BindingContext = new TimerModel();
+            BindingContext = new Distance();
+
+
+            BindingContext = new Timer();
         }
 
-<<<<<<< Updated upstream
-=======
+
         private void StopButton_Clicked(object sender, EventArgs e)
         {
             finishLabel.IsVisible = true;
@@ -63,7 +58,7 @@ namespace App6.Views
             welcomeLabel.IsVisible = false;
             
         } 
->>>>>>> Stashed changes
+
     }
 
 
