@@ -41,7 +41,11 @@ namespace App6.Views
             stopButton.IsVisible = true;
             startButton.IsVisible = false;
             BindingContext = new Timer();
+<<<<<<< Updated upstream
             
+>>>>>>> Stashed changes
+=======
+            BindingContext = new Distance();
 >>>>>>> Stashed changes
 
             BindingContext = new TimerModel();
