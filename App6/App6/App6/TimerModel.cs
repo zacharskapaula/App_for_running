@@ -12,37 +12,38 @@ namespace App6
     {
         Stopwatch stopwatch = new Stopwatch();
         private Timer time = new Timer();
-        
-        private string _hours;
-        public string HoursCounter
+        //private bool timerRunning;
+        private string _stopWatchHours;
+
+        public string StopWatchHours
         {
-            get { return _hours; }
+            get { return _stopWatchHours; }
             set
             {
-                _hours = value;
-                OnPropertyChanged("HoursCounter");
+                _stopWatchHours = value;
+                OnPropertyChanged("StopWatchHours");
             }
         }
 
-        private string _minutes;
-        public string MinutesCounter
+        private string _stopWatchMinutes;
+        public string StopWatchMinutes
         {
-            get { return _minutes; }
+            get { return _stopWatchMinutes; }
             set
             {
-                _minutes = value;
-                OnPropertyChanged("MinutesCounter");
+                _stopWatchMinutes = value;
+                OnPropertyChanged("StopWatchMinutes");
             }
         }
 
-        private string _seconds;
-        public string SecondsCounter
+        private string _stopWatchSeconds;
+        public string StopWatchSeconds
         {
-            get { return _seconds; }
+            get { return _stopWatchSeconds; }
             set
             {
-                _seconds = value;
-                OnPropertyChanged("SecondsCounter");
+                _stopWatchSeconds = value;
+                OnPropertyChanged("StopWatchSeconds");
             }
         }
 
@@ -55,32 +56,22 @@ namespace App6
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
         }
-        /*public void StopTimer()
-        {
-            stopwatch.Stop();
-            HoursCounter = stopwatch.Elapsed.Hours.ToString();
-            MinutesCounter = stopwatch.Elapsed.Minutes.ToString();
-            SecondsCounter = stopwatch.Elapsed.Seconds.ToString();
-        }*/
 
         public TimerModel()
         {
             stopwatch.Start();
-            HoursCounter = stopwatch.Elapsed.Hours.ToString();
-            MinutesCounter = stopwatch.Elapsed.Minutes.ToString();
-            SecondsCounter = stopwatch.Elapsed.Seconds.ToString();
+            StopWatchHours = stopwatch.Elapsed.Hours.ToString();
+            StopWatchMinutes = stopwatch.Elapsed.Minutes.ToString();
+            StopWatchSeconds = stopwatch.Elapsed.Seconds.ToString();
 
             Device.StartTimer(TimeSpan.FromSeconds(1), () =>
             {
-                HoursCounter = stopwatch.Elapsed.Hours.ToString();
-                MinutesCounter = stopwatch.Elapsed.Minutes.ToString();
-                SecondsCounter = stopwatch.Elapsed.Seconds.ToString();
+                StopWatchHours = stopwatch.Elapsed.Hours.ToString();
+                StopWatchMinutes = stopwatch.Elapsed.Minutes.ToString();
+                StopWatchSeconds = stopwatch.Elapsed.Seconds.ToString();
                 return true;
 
             });
         }
-
-        
-
     }
 }
