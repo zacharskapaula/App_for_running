@@ -5,6 +5,8 @@
              xmlns:vm="clr-namespace:App6.ViewModels"
              Title="{Binding Title}">
 
+    
+
     <ContentPage.BindingContext>
         <vm:AboutViewModel />
     </ContentPage.BindingContext>
