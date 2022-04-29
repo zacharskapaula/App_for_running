@@ -25,7 +25,11 @@
             <Label x:Name="welcomeLabel" Text="Welcome to RunningApp! Start your traning now!"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
-            <Button Text="Start" Clicked="Button_Clicked"/>
+            <Label x:Name="finishLabel" Text="Koniec"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+            <Button Text="Start" Clicked="Button_Clicked" x:Name="startButton"/>
+            <Button Text="Start" Clicked="Button_Clicked" x:Name="stopButton"/>
             <mymap:Map x:Name="mylocalMap" 
                            HorizontalOptions="FillAndExpand"
                            VerticalOptions="FillAndExpand"
