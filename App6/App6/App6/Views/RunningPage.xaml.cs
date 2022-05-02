@@ -43,17 +43,6 @@ namespace App6.Views
 
 
 
-
-            stopButton.IsVisible = true;
-            startButton.IsVisible = false;
-              
-            BindingContext = new Timer();
-            //BindingContext = new Distance();
-            //distanceLabel.Text = 
-          
-        }
-
-
         private void StopButton_Clicked(object sender, EventArgs e)
         {
             finishLabel.IsVisible = true;

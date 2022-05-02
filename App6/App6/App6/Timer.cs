@@ -13,37 +13,37 @@ namespace App6
         Stopwatch stopwatch = new Stopwatch();
         private Timer time = new Timer();
         //private bool timerRunning;
-        private string _stopWatchHours;
+        private string _hours;
 
-        public string StopWatchHours
+        public string HoursCounter
         {
-            get { return _stopWatchHours; }
+            get { return _hours; }
             set
             {
-                _stopWatchHours = value;
-                OnPropertyChanged("StopWatchHours");
+                _hours = value;
+                OnPropertyChanged("HoursCounter");
             }
         }
 
-        private string _stopWatchMinutes;
-        public string StopWatchMinutes
+        private string _minutes;
+        public string MinutesCounter
         {
-            get { return _stopWatchMinutes; }
+            get { return _minutes; }
             set
             {
-                _stopWatchMinutes = value;
-                OnPropertyChanged("StopWatchMinutes");
+                _minutes = value;
+                OnPropertyChanged("MinutesCounter");
             }
         }
 
-        private string _stopWatchSeconds;
-        public string StopWatchSeconds
+        private string _seconds;
+        public string SecondsCounter
         {
-            get { return _stopWatchSeconds; }
+            get { return _seconds; }
             set
             {
-                _stopWatchSeconds = value;
-                OnPropertyChanged("StopWatchSeconds");
+                _seconds = value;
+                OnPropertyChanged("SecondsCounter");
             }
         }
 
@@ -60,15 +60,15 @@ namespace App6
         public TimerModel()
         {
             stopwatch.Start();
-            StopWatchHours = stopwatch.Elapsed.Hours.ToString();
-            StopWatchMinutes = stopwatch.Elapsed.Minutes.ToString();
-            StopWatchSeconds = stopwatch.Elapsed.Seconds.ToString();
+            HoursCounter = stopwatch.Elapsed.Hours.ToString();
+            MinutesCounter = stopwatch.Elapsed.Minutes.ToString();
+            SecondsCounter = stopwatch.Elapsed.Seconds.ToString();
 
             Device.StartTimer(TimeSpan.FromSeconds(1), () =>
             {
-                StopWatchHours = stopwatch.Elapsed.Hours.ToString();
-                StopWatchMinutes = stopwatch.Elapsed.Minutes.ToString();
-                StopWatchSeconds = stopwatch.Elapsed.Seconds.ToString();
+                HoursCounter = stopwatch.Elapsed.Hours.ToString();
+                MinutesCounter = stopwatch.Elapsed.Minutes.ToString();
+                SecondsCounter = stopwatch.Elapsed.Seconds.ToString();
                 return true;
 
             });
