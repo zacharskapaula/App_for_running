@@ -31,16 +31,39 @@ namespace App6.Views
             
         }
 
-        private void Button_Clicked(object sender, EventArgs e)
+        private void StartButton_Clicked(object sender, EventArgs e)
         {
             welcomeLabel.IsVisible = false;
             timerLabel.IsVisible = true; 
             distanceLabel.IsVisible = true;
 
+
             BindingContext = new TimerModel();
         }
 
 
+
+
+            stopButton.IsVisible = true;
+            startButton.IsVisible = false;
+              
+            BindingContext = new Timer();
+            //BindingContext = new Distance();
+            //distanceLabel.Text = 
+          
+        }
+
+
+        private void StopButton_Clicked(object sender, EventArgs e)
+        {
+            finishLabel.IsVisible = true;
+            stopButton.IsVisible = false;
+            startButton.IsVisible = false;
+            timerLabel.IsVisible = false;
+            distanceLabel.IsVisible = false;
+            welcomeLabel.IsVisible = false;
+            
+        } 
 
 
     }
