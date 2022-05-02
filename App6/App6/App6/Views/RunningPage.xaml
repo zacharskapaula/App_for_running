@@ -8,24 +8,31 @@
         <StackLayout>
             <Label x:Name="distanceLabel" Text="Distance" IsVisible="false" VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
-            <Label x:Name="time1Label" Text="time" IsVisible="false" VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand"/>
-            <Label x:Name="timerLabel" LineBreakMode="WordWrap" VerticalOptions="CenterAndExpand" IsVisible="false"
-                HorizontalOptions="CenterAndExpand">
+            
+            <Label x:Name="timerLabel" LineBreakMode="WordWrap" VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" IsVisible="false">
                 <Label.FormattedText>
-                <FormattedString>
-                    <Span Text="{Binding StopWatchHours}"/>
-                    <Span Text=":" />
-                    <Span Text="{Binding StopWatchMinutes}" />
-                    <Span Text=":" />
-                        <Span Text="{Binding StopWatchSeconds}" />
+                    <FormattedString>
+                        <Span Text="{Binding HoursCounter}"/>
+                        <Span Text=":" />
+                        <Span Text="{Binding MinutesCounter}" />
+                        <Span Text=":" />
+                        <Span Text="{Binding SecondsCounter}" />
                     </FormattedString>
             </Label.FormattedText>
             </Label>
             <Label x:Name="welcomeLabel" Text="Welcome to RunningApp! Start your traning now!"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
+
             <Button Text="Start" Clicked="Button_Clicked"/>
+
+            <Label x:Name="finishLabel" Text="Koniec"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand"
+                   IsVisible="false"/>
+            <Button Text="Start" Clicked="StartButton_Clicked" x:Name="startButton"/>
+            <Button Text="Stop" Clicked="StopButton_Clicked"  x:Name="stopButton" IsVisible="false"/>
             <mymap:Map x:Name="mylocalMap" 
                            HorizontalOptions="FillAndExpand"
                            VerticalOptions="FillAndExpand"
