@@ -23,41 +23,25 @@ namespace App6.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class RunningPage : ContentPage
     {
-
+        
 
         public RunningPage()
         {
             InitializeComponent();
-
+            
         }
 
         private void Button_Clicked(object sender, EventArgs e)
         {
             welcomeLabel.IsVisible = false;
-            timerLabel.IsVisible = true;
+            timerLabel.IsVisible = true; 
             distanceLabel.IsVisible = true;
 
-            stopButton.IsVisible = true;
-            startButton.IsVisible = false;
-            BindingContext = new Timer();
-
-            BindingContext = new Distance();
-
-
-            BindingContext = new Timer();
+            BindingContext = new TimerModel();
         }
 
 
-        private void StopButton_Clicked(object sender, EventArgs e)
-        {
-            finishLabel.IsVisible = true;
-            stopButton.IsVisible = false;
-            startButton.IsVisible = false;
-            timerLabel.IsVisible = true;
-            distanceLabel.IsVisible = false;
-            welcomeLabel.IsVisible = false;
-            
-        } 
+
 
     }
 
