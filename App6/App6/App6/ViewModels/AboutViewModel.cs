@@ -9,7 +9,7 @@ namespace App6.ViewModels
     {
         public AboutViewModel()
         {
-            Title = "About";
+            Title = "Run!";
             OpenWebCommand = new Command(async () => await Browser.OpenAsync("https://aka.ms/xamarin-quickstart"));
         }
 

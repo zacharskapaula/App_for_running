@@ -11,6 +11,18 @@ namespace App6
     public class Distance : INotifyPropertyChanged
     {
 
+        //double distance = Location.CalculateDistance(Xamarin.Essentials.Location.CalculateDistance locationStart, latitudeEnd, longitudeEnd, Xamarin.Essentials.DistanceUnits units);
+        
+        
+
+        public async void GetLoc() 
+        {
+            
+            Location start_location = await Geolocation.GetLocationAsync(new GeolocationRequest(GeolocationAccuracy.Default, TimeSpan.FromSeconds(2)));
+            var finish_location = new Location(33.807920, -84.046791);
+            double distance = Location.CalculateDistance(start_location, finish_location, DistanceUnits.Kilometers);
+
+
         public async void GetLoc()
         {
             Location start_location = await Geolocation.GetLocationAsync(new GeolocationRequest(GeolocationAccuracy.Default, TimeSpan.FromSeconds(2)));
@@ -29,6 +41,7 @@ namespace App6
                 double route2 = start_location.Latitude - longt;
 
             }
+
         }
 
         private string startLocation;
@@ -45,6 +58,8 @@ namespace App6
         public Distance()
         {
             GetLoc();
+
+
 
         }
 
