@@ -22,16 +22,25 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <StackLayout BackgroundColor="{StaticResource Accent}" VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
+        <StackLayout BackgroundColor="#A7CDAF" VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
           
         </StackLayout>
         <ScrollView Grid.Row="1">
             <StackLayout Orientation="Vertical" Padding="30,24,30,24" Spacing="10">
                 
+                
+                <Image Source="runningGuy.png"
+                       WidthRequest="200"/>
+
                 <Button Text="Start training" 
-                        Clicked="startButton_Clicked"/>
+                        Clicked="startButton_Clicked"
+                        CornerRadius="100"
+                        HeightRequest="90"
+                        BackgroundColor="#397A41"/>
             </StackLayout>
         </ScrollView>
-    </Grid>
 
+        
+    </Grid>
+ 
 </ContentPage>

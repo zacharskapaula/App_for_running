@@ -73,5 +73,14 @@ namespace App6
 
             });
         }
+
+        public TimerModel(int i)
+        {
+            HoursCounter = stopwatch.Elapsed.Hours.ToString();
+            MinutesCounter = stopwatch.Elapsed.Minutes.ToString();
+            SecondsCounter = stopwatch.Elapsed.Seconds.ToString();
+            stopwatch.Stop();
+            
+        }
     }
 }
