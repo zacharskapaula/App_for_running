@@ -27,11 +27,11 @@
                     </FormattedString>
                 </Label.FormattedText>
             </Label>
-            <Label  x:Name="trainingStartTime" Text="{Binding StringFormat='{}{0:h:mm:ss tt}'}"
+            <Label  FontSize="Small" x:Name="trainingStartTime" IsVisible="false" Text="{Binding StringFormat='{}{0:h:mm:ss tt}'}"
                     VerticalOptions="CenterAndExpand"  HorizontalOptions="CenterAndExpand"/>
-            <Label  x:Name="trainingStopTime" Text="{Binding StringFormat='{}{0:h:mm:ss tt}'}"
+            <Label   FontSize="Small" x:Name="trainingStopTime" IsVisible="false" Text="{Binding StringFormat='{}{0:h:mm:ss tt}'}"
                     VerticalOptions="CenterAndExpand"  HorizontalOptions="CenterAndExpand"/>
-            <Label  x:Name="hourLabel" Text="{Binding StringFormat='{}{0:h:mm:ss tt}'}"
+            <Label  x:Name="hourLabel" IsVisible="false" Text="{Binding StringFormat='{}{0:h:mm:ss tt}'}"
                     VerticalOptions="CenterAndExpand"  HorizontalOptions="CenterAndExpand"/>
             <Label x:Name="welcomeLabel" Text="Welcome to RunningApp! Start your traning now!" HorizontalOptions="CenterAndExpand"
                 VerticalOptions="CenterAndExpand" />
@@ -39,7 +39,7 @@
 
             <Label x:Name="finishLabel" Text="Koniec" VerticalOptions="CenterAndExpand"  HorizontalOptions="CenterAndExpand" IsVisible="false"/>
             <Button Text="START" IsVisible="true" Clicked="StartButton_Clicked" x:Name="startButton"  BackgroundColor="#397A41"/>
-            <Button Text="STOP" IsVisible="true" Clicked="StopButton_Clicked" x:Name="stopButton"  BackgroundColor="#397A41"/>
+            <Button Text="STOP" IsVisible="false" Clicked="StopButton_Clicked" x:Name="stopButton"  BackgroundColor="#397A41"/>
            
             <mymap:Map x:Name="mylocalMap" 
                            HorizontalOptions="FillAndExpand" 
