@@ -17,5 +17,16 @@ namespace App6.Views
             InitializeComponent();
             BindingContext = new NewItemViewModel();
         }
+
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
+            
+        }
+
+        async void Button_Clicked(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

@@ -25,18 +25,24 @@
                         <Span Text=":" />
                         <Span Text="{Binding SecondsCounter}" />
                     </FormattedString>
-            </Label.FormattedText>
+                </Label.FormattedText>
             </Label>
-            <Label x:Name="timeNameLabel" Text="Time" FontSize="Medium" IsVisible="false" VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand"/>
+            <Label  x:Name="trainingStartTime" Text="{Binding StringFormat='{}{0:h:mm:ss tt}'}"
+                    VerticalOptions="CenterAndExpand"  HorizontalOptions="CenterAndExpand"/>
+            <Label  x:Name="trainingStopTime" Text="{Binding StringFormat='{}{0:h:mm:ss tt}'}"
+                    VerticalOptions="CenterAndExpand"  HorizontalOptions="CenterAndExpand"/>
+            <Label  x:Name="hourLabel" Text="{Binding StringFormat='{}{0:h:mm:ss tt}'}"
+                    VerticalOptions="CenterAndExpand"  HorizontalOptions="CenterAndExpand"/>
             <Label x:Name="welcomeLabel" Text="Welcome to RunningApp! Start your traning now!" HorizontalOptions="CenterAndExpand"
                 VerticalOptions="CenterAndExpand" />
+           
 
             <Label x:Name="finishLabel" Text="Koniec" VerticalOptions="CenterAndExpand"  HorizontalOptions="CenterAndExpand" IsVisible="false"/>
-            <Button Text="Start" Clicked="StartButton_Clicked" x:Name="startButton"  BackgroundColor="#397A41"/>
-            <Button Text="Stop" Clicked="StopButton_Clicked"  x:Name="stopButton" IsVisible="false"  BackgroundColor="#397A41"/>
+            <Button Text="START" IsVisible="true" Clicked="StartButton_Clicked" x:Name="startButton"  BackgroundColor="#397A41"/>
+            <Button Text="STOP" IsVisible="true" Clicked="StopButton_Clicked" x:Name="stopButton"  BackgroundColor="#397A41"/>
+           
             <mymap:Map x:Name="mylocalMap" 
-                           HorizontalOptions="FillAndExpand"
+                           HorizontalOptions="FillAndExpand" 
                            VerticalOptions="FillAndExpand"
                            IsShowingUser="True"
                            WidthRequest="100"
