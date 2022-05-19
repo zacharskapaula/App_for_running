@@ -91,6 +91,7 @@ namespace App6.Views
             startButton.IsVisible = false;
             stopButton.IsVisible = true;
             GetLoc();
+
             
             BindingContext = new TimerModel(); 
             
@@ -102,10 +103,14 @@ namespace App6.Views
             string thatTime = myDate.ToString();
             trainingStopTime.Text = thatTime;
             finishLabel.IsVisible = true;
+            trainingStartTime.IsVisible = true;
+            trainingStopTime.IsVisible = true;
+            hourLabel.IsVisible = true;
             stopButton.IsVisible = false;
             startButton.IsVisible = false;
-            timerLabel.IsVisible = true;
+            timerLabel.IsVisible = false;
             distanceLabel.IsVisible = false;
+            speedLabel.IsVisible = false;
             welcomeLabel.IsVisible = false;
             TotalTime();
 
