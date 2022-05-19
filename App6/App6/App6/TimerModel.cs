@@ -5,6 +5,9 @@ using System.ComponentModel;
 using System.Diagnostics;
 using Xamarin.Forms;
 using System.Timers;
+using static App6.TimeItems;
+using Xamarin.Forms.Internals;
+using System.Runtime.CompilerServices;
 
 namespace App6
 {
@@ -46,6 +49,17 @@ namespace App6
                 OnPropertyChanged("SecondsCounter");
             }
         }
+        protected bool SetProperty<T>(ref T storage, T value, [CallerMemberName] string propertyName = null)
+        {
+            if (EqualityComparer<T>.Default.Equals(storage, value))
+            {
+                return false;
+            }
+            storage = value;
+            OnPropertyChanged(propertyName);
+
+            return true;
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void OnPropertyChanged(string propertyName)
@@ -56,7 +70,15 @@ namespace App6
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
         }
+        DateTime _currentStartTime;
+        public DateTime CurrentStartTime
+        {
+            get => _currentStartTime;
+            set => SetProperty(ref _currentStartTime, value);
+            
+        }
 
+     
         public TimerModel()
         {
             stopwatch.Start();
@@ -72,15 +94,20 @@ namespace App6
                 return true;
 
             });
+            var item = new TimeItems
+            {
+                Start = CurrentStartTime,
+                Stop = DateTime.Now
+            };
         }
 
-        public TimerModel(int i)
+        /*public TimerModel(int i)
         {
             HoursCounter = stopwatch.Elapsed.Hours.ToString();
             MinutesCounter = stopwatch.Elapsed.Minutes.ToString();
             SecondsCounter = stopwatch.Elapsed.Seconds.ToString();
             stopwatch.Stop();
             
-        }
+        } */
     }
 }
