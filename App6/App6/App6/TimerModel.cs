@@ -5,8 +5,6 @@ using System.ComponentModel;
 using System.Diagnostics;
 using Xamarin.Forms;
 using System.Timers;
-using static App6.TimeItems;
-using Xamarin.Forms.Internals;
 using System.Runtime.CompilerServices;
 
 namespace App6
@@ -94,11 +92,7 @@ namespace App6
                 return true;
 
             });
-            var item = new TimeItems
-            {
-                Start = CurrentStartTime,
-                Stop = DateTime.Now
-            };
+
         }
 
         /*public TimerModel(int i)
