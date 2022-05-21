@@ -33,7 +33,15 @@ namespace App6.Views
         public async void GetStartLoc()
         {
             start_location = await Geolocation.GetLocationAsync(new GeolocationRequest(GeolocationAccuracy.Default, TimeSpan.FromSeconds(1)));
+            Xamarin.Forms.Maps.Position map_position = new Xamarin.Forms.Maps.Position(start_location.Latitude, start_location.Longitude);
             //start_location = new Location(45.52989617735217, -122.67512739528975);
+            MapSpan mapSpan = MapSpan.FromCenterAndRadius(map_position, Xamarin.Forms.Maps.Distance.FromKilometers(0.5));
+            mylocalMap.MoveToRegion(mapSpan);
+            
+            //Xamarin.Forms.Maps.Position map_position = new Xamarin.Forms.Maps.Position(start_location.Latitude, start_location.Longitude);
+            //MapSpan mylocalMapSpan = new MapSpan(map_position, 0.1, 0.1);
+            //Xamarin.Forms.Maps.Map mylocalMap = new Xamarin.Forms.Maps.Map(mylocalMapSpan);
+
             distanceLabel.Text = start_location.ToString();
 
             Pin pin_start = new Pin
@@ -121,10 +129,11 @@ namespace App6.Views
         public void SetMap()
         {
 
-        }
+        } 
 
         public void StartButton_Clicked(object sender, EventArgs e)
         {
+            
             DateTime startTime = DateTime.Now;
             string time = startTime.ToString();
             trainingStartTime.Text = time;
