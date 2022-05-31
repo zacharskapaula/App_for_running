@@ -40,7 +40,6 @@ namespace App6.Views
             }
  
         };
-        //mylocalMap.MapElements.Add(polyline);
 
 
         Location start_location;
@@ -51,7 +50,7 @@ namespace App6.Views
             MapSpan mapSpan = MapSpan.FromCenterAndRadius(map_position, Xamarin.Forms.Maps.Distance.FromKilometers(0.5));
             mylocalMap.MoveToRegion(mapSpan);
 
-            distanceLabel.Text = start_location.ToString();
+            //distanceLabel.Text = start_location.ToString();
 
             Pin pin_start = new Pin
             {
@@ -65,41 +64,53 @@ namespace App6.Views
         }
 
         Location on_road_location;
+        double distance_on_road;
+        double t;
         public async void OnRoadLocation()
         {
             on_road_location = await Geolocation.GetLocationAsync(new GeolocationRequest(GeolocationAccuracy.Default, TimeSpan.FromSeconds(1)));
-            speedLabel.Text = on_road_location.ToString();
+            //speedLabel.Text = on_road_location.ToString();
+            Xamarin.Forms.Maps.Position on_road_cal = new Xamarin.Forms.Maps.Position(on_road_location.Latitude, on_road_location.Longitude);
             Xamarin.Forms.Maps.Position point_on_road = new Xamarin.Forms.Maps.Position(on_road_location.Latitude, on_road_location.Longitude);
             polyline.Geopath.Add(point_on_road);
+            
+            distance_on_road = Xamarin.Essentials.Location.CalculateDistance(start_location, on_road_location, DistanceUnits.Kilometers);
+                //t = distance_on_road + distance_on_road;
+            distanceLabel.Text = (Math.Round(distance_on_road, 2)).ToString() + "km";
+            double time = Convert.ToDouble(timerLabel.Text);
+
+            //speedLabel.Text = (distance_on_road / time).ToString() + "km/h";
         }
 
-        bool shouldRun = false;
-        CancellationTokenSource cancellation;
+        
         public void RoadLocationEverySeconds()
         {
             
-            CancellationTokenSource cts = this.cancellation = new CancellationTokenSource();
             Xamarin.Forms.Device.StartTimer(new TimeSpan(0, 0, 5), () =>
             {
-                if (this.cancellation != null)
-                    Interlocked.Exchange(ref this.cancellation, new CancellationTokenSource()).Cancel();
                 Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                 {
-                    OnRoadLocation();
-                    
+                    OnRoadLocation(); 
                 });
-                return shouldRun = true;
+                if (stopButton.IsVisible == true)
+                {
+                    return true;
+                }
+                else return false;
+                
             });
         }
- 
+
+
         Location finish_location;
         public async void GetStopLoc()
         {
             finish_location = await Geolocation.GetLocationAsync(new GeolocationRequest(GeolocationAccuracy.Default, TimeSpan.FromSeconds(1)));
             finish_location = new Location(finish_location.Latitude, finish_location.Longitude);
             Xamarin.Forms.Maps.Position finish_position =  new Xamarin.Forms.Maps.Position(finish_location.Latitude, finish_location.Longitude);
-
-            distanceLabel.Text = finish_location.ToString();
+            //distance_on_road = Xamarin.Essentials.Location.CalculateDistance(on_road_location, finish_location, DistanceUnits.Kilometers);
+            //distanceLabel.Text = (Math.Round(distance_on_road, 2)).ToString() + "km";
+            //distanceLabel.Text = finish_location.ToString();
 
             //double distance = Location.CalculateDistance(start_location, finish_location, DistanceUnits.Kilometers);
             //distanceLabel.Text = (Math.Round(distance, 2)).ToString() + "km";
@@ -112,12 +123,17 @@ namespace App6.Views
             mylocalMap.Pins.Add(pin_stop);
             polyline.Geopath.Add(finish_position);
 
-            if (this.cancellation != null)
-                Interlocked.Exchange(ref this.cancellation, new CancellationTokenSource()).Cancel();
-            shouldRun = false;
+            double distancet = Xamarin.Essentials.Location.CalculateDistance(on_road_location, finish_location, DistanceUnits.Kilometers);
+            distanceLabel.Text = (Math.Round(distancet, 2)).ToString() + "km";
+            //if (this.cancellation != null)
+            //Interlocked.Exchange(ref this.cancellation, new CancellationTokenSource()).Cancel();
+            // shouldRun = false;
+            buttonRow.Height = 0;
+            mapRow.Height = 260;
+            
         }
 
-        public async void CountDistance()
+      /*  public async void CountDistance()
         {
             try
             {
@@ -125,15 +141,14 @@ namespace App6.Views
                 {
 
                     on_road_location = await Geolocation.GetLocationAsync(new GeolocationRequest(GeolocationAccuracy.Default, TimeSpan.FromSeconds(1)));
-                    new Xamarin.Forms.Maps.Position(on_road_location.Latitude, on_road_location.Longitude);
+                    //new Xamarin.Forms.Maps.Position(on_road_location.Latitude, on_road_location.Longitude);
 
                     Location OnTrip = new Location(on_road_location.Latitude, on_road_location.Longitude);
 
                     double distance = Xamarin.Essentials.Location.CalculateDistance(start_location, OnTrip, DistanceUnits.Kilometers);
                     double distancef = Xamarin.Essentials.Location.CalculateDistance(OnTrip, finish_location, DistanceUnits.Kilometers);
-                    double t = distancef + distance ;
-                    distanceLabel.Text = (Math.Round(t, 2)).ToString() + "km";
                     
+                  
                 }
             }
             catch (Exception ex)
@@ -144,6 +159,7 @@ namespace App6.Views
 
             }
         }
+      */
 
         public void StartButton_Clicked(object sender, EventArgs e)
         {
@@ -152,7 +168,10 @@ namespace App6.Views
             string time = startTime.ToString();
             trainingStartTime.Text = time;
             welcomeLabel.IsVisible = false;
-            timerLabel.IsVisible = true; 
+            timerLabel.IsVisible = true;
+            distanceNameLabel.IsVisible = true;
+            speedNameLabel.IsVisible = true;
+            timeNameLabel.IsVisible = true;
             distanceLabel.IsVisible = true;
             speedLabel.IsVisible = true;
             startButton.IsVisible = false;
@@ -169,19 +188,20 @@ namespace App6.Views
             DateTime myDate = DateTime.Now;
             string thatTime = myDate.ToString();
             trainingStopTime.Text = thatTime;
-            finishLabel.IsVisible = true;
-            //trainingStartTime.IsVisible = true;
-            //trainingStopTime.IsVisible = true;
+            //finishLabel.IsVisible = true;
+            distanceLabel.IsVisible = true;
+            distanceNameLabel.IsVisible = true;
+            speedLabel.IsVisible = true;
+            speedNameLabel.IsVisible = true;
+            timerLabel.IsVisible = false;
             hourLabel.IsVisible = true;
+            timeNameLabel.IsVisible = true;
             stopButton.IsVisible = false;
             startButton.IsVisible = false;
-            timerLabel.IsVisible = false;
-            distanceLabel.IsVisible = true;
-            speedLabel.IsVisible = false;
             welcomeLabel.IsVisible = false;
             TotalTime();
             GetStopLoc();
-            CountDistance();
+           
             //Xamarin.Forms.Device.StartTimer() = false;
         } 
 
