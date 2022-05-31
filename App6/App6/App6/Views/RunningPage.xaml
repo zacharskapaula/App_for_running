@@ -6,16 +6,29 @@
              Title="Start running">
     <ContentPage.Content>
         <StackLayout>
-            <Label x:Name="distanceLabel" Text="Distance" FontSize="Large" IsVisible="false" VerticalOptions="CenterAndExpand" 
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition x:Name="buttonRow"  Height="50"/>
+                    <RowDefinition x:Name="mapRow" Height="210"/>
+                    
+                </Grid.RowDefinitions>
+
+                <Label Grid.Row="0" x:Name="distanceLabel" Text="Distance" FontSize="45" FontAttributes="Bold" IsVisible="false" VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand"/>
-            <Label x:Name="distanceNameLabel" Text="Distance" FontSize="Medium" IsVisible="false" VerticalOptions="CenterAndExpand" 
+                <Label Grid.Row="1" x:Name="distanceNameLabel" IsVisible="false" Text="Distance" FontSize="Small"  VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand"/>
-            <Label x:Name="speedLabel" Text="Speed" IsVisible="false" FontSize="Large" VerticalOptions="CenterAndExpand" 
+                <Label Grid.Row="2" x:Name="speedLabel" Text="Speed" IsVisible="false" FontSize="45" FontAttributes="Bold" VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
-            <Label x:Name="speedNameLabel" Text="Speed" FontSize="Medium" IsVisible="false" VerticalOptions="CenterAndExpand" 
+                <Label Grid.Row="3" x:Name="speedNameLabel" IsVisible="false" Text="Speed" FontSize="Small"  VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand"/>
 
-            <Label x:Name="timerLabel" LineBreakMode="WordWrap" FontSize="Large" VerticalOptions="CenterAndExpand" 
+                <Label Grid.Row="4" x:Name="timerLabel" LineBreakMode="WordWrap" FontSize="45" FontAttributes="Bold" VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" IsVisible="false">
                 <Label.FormattedText>
                     <FormattedString>
@@ -27,26 +40,28 @@
                     </FormattedString>
                 </Label.FormattedText>
             </Label>
-            <Label  FontSize="Small" x:Name="trainingStartTime" IsVisible="false" Text="{Binding StringFormat='{}{0:h:mm:ss tt}'}"
-                    VerticalOptions="CenterAndExpand"  HorizontalOptions="CenterAndExpand"/>
-            <Label   FontSize="Small" x:Name="trainingStopTime" IsVisible="false" Text="{Binding StringFormat='{}{0:h:mm:ss tt}'}"
-                    VerticalOptions="CenterAndExpand"  HorizontalOptions="CenterAndExpand"/>
-            <Label  x:Name="hourLabel" FontSize="Medium" IsVisible="false" Text="{Binding StringFormat='{}{0:h:mm:ss tt}'}"
-                    VerticalOptions="CenterAndExpand"  HorizontalOptions="CenterAndExpand"/>
-            <Label x:Name="welcomeLabel" Text="Welcome to RunningApp! Start your traning now!" HorizontalOptions="CenterAndExpand"
-                VerticalOptions="CenterAndExpand" />
 
-            <Label x:Name="finishLabel" FontSize="Medium" Text="Finish" VerticalOptions="CenterAndExpand"  HorizontalOptions="CenterAndExpand" IsVisible="false"/>
-            <Button Text="START" IsVisible="true" Clicked="StartButton_Clicked" x:Name="startButton"  BackgroundColor="#397A41"/>
-            <Button Text="STOP" IsVisible="false" Clicked="StopButton_Clicked" x:Name="stopButton"  BackgroundColor="#397A41"/>
-            <mymap:Map x:Name="mylocalMap" 
+                <Label  FontSize="Small" x:Name="trainingStartTime" IsVisible="false" Text="{Binding StringFormat='{}{0:h:mm:ss tt}'}"
+                    VerticalOptions="CenterAndExpand"  HorizontalOptions="CenterAndExpand"/>
+                <Label   FontSize="Small" x:Name="trainingStopTime" IsVisible="false" Text="{Binding StringFormat='{}{0:h:mm:ss tt}'}"
+                    VerticalOptions="CenterAndExpand"  HorizontalOptions="CenterAndExpand"/>
+                <Label Grid.Row="4" x:Name="hourLabel" FontSize="45" FontAttributes="Bold" IsVisible="false" Text="{Binding StringFormat='{}{0:h:mm:ss tt}'}"
+                    VerticalOptions="CenterAndExpand"  HorizontalOptions="CenterAndExpand"/>
+                <Label Grid.Row="2" x:Name="welcomeLabel" Text="Welcome to RunningApp! Start your traning now!" HorizontalOptions="CenterAndExpand"
+                VerticalOptions="CenterAndExpand" />
+                <Label Grid.Row="5" x:Name="timeNameLabel" Text="Time" FontSize="Small" IsVisible="false" VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand"/>
+                <Label Grid.Row="6" x:Name="finishLabel" FontSize="Large"  Text="Finish" VerticalOptions="CenterAndExpand"  HorizontalOptions="CenterAndExpand" IsVisible="false"/>
+                <Button Grid.Row="6" Text="START" IsVisible="true" Clicked="StartButton_Clicked" x:Name="startButton"  BackgroundColor="#397A41"/>
+                <Button Grid.Row="6" Text="STOP" IsVisible="false" Clicked="StopButton_Clicked" x:Name="stopButton"  BackgroundColor="#397A41"/>
+                <mymap:Map Grid.Row="7" x:Name="mylocalMap" 
                            HorizontalOptions="FillAndExpand" 
                            VerticalOptions="FillAndExpand"
                            IsShowingUser="True"
                            WidthRequest="100"
                            HeightRequest="180">
-                <x:Arguments>
-                    <mymap:MapSpan>
+                    <x:Arguments>
+                        <mymap:MapSpan>
                                 <x:Arguments>
                                     <mymap:Position>
                                         <x:Arguments>
@@ -60,8 +75,9 @@
                             </mymap:MapSpan>
                         </x:Arguments>
                    
-            </mymap:Map>
-  
+                </mymap:Map>
+            
+            </Grid>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
