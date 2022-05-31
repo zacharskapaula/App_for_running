@@ -16,7 +16,7 @@ namespace App6
             {
                 if(database == null)
                 {
-                    database = new Database(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "UsersData.db"));
+                    database = new Database(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "UsersData.db3"));
                 }
                 return database;
             }
