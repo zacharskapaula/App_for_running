@@ -17,6 +17,7 @@ using System.Xml.Serialization;
 using TcxTools;
 using System.Runtime.CompilerServices;
 using System.Threading;
+using Plugin.Geolocator;
 
 namespace App6.Views
 {
@@ -42,6 +43,7 @@ namespace App6.Views
         };
 
 
+        
         Location start_location;
         public async void GetStartLoc()
         {
@@ -64,8 +66,7 @@ namespace App6.Views
         }
 
         Location on_road_location;
-        double distance_on_road;
-        double t;
+        double distance_on_road; 
         public async void OnRoadLocation()
         {
             on_road_location = await Geolocation.GetLocationAsync(new GeolocationRequest(GeolocationAccuracy.Default, TimeSpan.FromSeconds(1)));
@@ -79,10 +80,17 @@ namespace App6.Views
             distanceLabel.Text = (Math.Round(distance_on_road, 2)).ToString() + "km";
             double time = Convert.ToDouble(timerLabel.Text);
 
-            //speedLabel.Text = (distance_on_road / time).ToString() + "km/h";
+            var speed = on_road_location.Speed * 3.6;
+
+            speedLabel.Text = speed.ToString() + "km/h";
+                //await Task.Delay(1000);
+
+                //speedLabel.Text = (distance_on_road / time).ToString() + "km/h";
+           
+
         }
 
-        
+
         public void RoadLocationEverySeconds()
         {
             
