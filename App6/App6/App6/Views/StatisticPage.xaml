@@ -4,8 +4,10 @@
              x:Class="App6.Views.ItemsPage"
              Title="Statistic"
              xmlns:local="clr-namespace:App6.ViewModels"  
-             xmlns:model="clr-namespace:App6.Models"  
+            
              x:Name="BrowseItemsPage">
 
-    
+
+    <ListView x:Name="listView" ></ListView>
+   
 </ContentPage>

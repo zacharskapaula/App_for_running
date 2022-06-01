@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using App6.Models;
+
 using App6.Services;
 using Xamarin.Forms;
 
@@ -10,11 +10,11 @@ namespace App6.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
-        public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>();
+         //public IDataStore<Time> DataStore => DependencyService.Get<IDataStore<Time>>();
 
         bool isBusy = false;
         public bool IsBusy
-        {
+        { 
             get { return isBusy; }
             set { SetProperty(ref isBusy, value); }
         }
