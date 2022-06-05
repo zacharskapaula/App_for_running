@@ -11,21 +11,28 @@ using Xamarin.Forms.Xaml;
 
 namespace App6.Views
 {
-    public partial class ItemsPage : ContentPage
+    public partial class StatisticPage : ContentPage
     {
-       
+        //TrainingView.ItemSource = training;
 
-        public ItemsPage()
+
+        public StatisticPage()
         {
             InitializeComponent();
   
         }
 
+        
+
         protected async override void OnAppearing()
         {
             base.OnAppearing();
-            //Database db = Database.GetInstance();
-            //listView.ItemsSource = await db.GetTrainingAsync();
+            Database db = Database.GetInstance();
+            TrainingView.ItemsSource = await db.GetDistanceAsync();
+            //await DisplayAlert("Uwaga", "Dystans", "ok");
+            //TrainingView.ItemsSource = await db.GetTrainingAsync();
+
+            //binding dla kilku rzeczy na raz zeby wyswietlalo sie w jednym wierszu
         }
     }
 }

@@ -1,13 +1,35 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="App6.Views.ItemsPage"
+             x:Class="App6.Views.StatisticPage"
              Title="Statistic"
              xmlns:local="clr-namespace:App6.ViewModels"  
             
              x:Name="BrowseItemsPage">
 
+    <ListView x:Name="TrainingView">
+        <ListView.Header>
+            <Grid>
+                
+                <Label Grid.Column="0" Text="Start" FontAttributes="Bold"/>
+                <Label Grid.Column="1" Text="Time" FontAttributes="Bold"/>
+                <Label Grid.Column="2" Text="Distance" FontAttributes="Bold"/>
+                <Label Grid.Column="3" Text="Speed" FontAttributes="Bold"></Label>
 
-    <ListView x:Name="listView" ></ListView>
-   
+            </Grid>
+        </ListView.Header>
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <StackLayout>
+                        <Label Grid.Column="0" Text="{Binding StartTime}"></Label> 
+                        <Label Grid.Column="1" Text="{Binding TotalTime}"></Label>
+                        <Label Grid.Column="2" Text="{Binding TrainingDistance}"></Label>
+                        <Label Grid.Column="3" Text="{Binding AverageSpeed}"></Label>
+                    </StackLayout>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+
 </ContentPage>
