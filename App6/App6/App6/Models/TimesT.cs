@@ -7,7 +7,7 @@ using SQLitePCL;
 namespace App6.Models
 {
     [Table("Time")]
-    public class Time
+    public class TimesT
     {
         [PrimaryKey]
         public int ID { get; set; }
@@ -17,7 +17,7 @@ namespace App6.Models
         public string TotalTime { get; set; }
 
 
-        public Time(String starttime, String stoptime, String totaltime)
+        public TimesT(String starttime, String stoptime, String totaltime)
         {
             this.StartTime = starttime;
             this.StopTime = stoptime;
@@ -25,9 +25,15 @@ namespace App6.Models
 
         }
 
-        public static Time createObject(string[] atributes)
+        public static TimesT createObject(string[] atributes)
         {
-            return new Time(atributes[0], atributes[1], atributes[2]);
+            return new TimesT(atributes[0], atributes[1], atributes[2]);
+        }
+
+        public TimesT()
+        {
+            
+
         }
     }
 }

@@ -6,7 +6,7 @@ using SQLite;
 namespace App6.Models
 {
     [Table("Speed")]
-    public class Speed
+    public class SpeedT
     {
         [PrimaryKey]
         public int ID { get; set; }
@@ -16,12 +16,12 @@ namespace App6.Models
         public string MaxSpeed { get; set; }
 
 
-        public Speed()
+        public SpeedT()
         {
 
         }
 
-        public Speed(String mininumspeed, String averagespeed, String maxspeed)
+        public SpeedT(String mininumspeed, String averagespeed, String maxspeed)
         {
             this.MininumSpeed = mininumspeed;
             this.AverageSpeed = averagespeed;
@@ -29,9 +29,9 @@ namespace App6.Models
 
         }
 
-        public static Speed createObject(string[] atributes)
+        public static SpeedT createObject(string[] atributes)
         {
-            return new Speed(atributes[0], atributes[1], atributes[2]);
+            return new SpeedT(atributes[0], atributes[1], atributes[2]);
         }
     }
 }
