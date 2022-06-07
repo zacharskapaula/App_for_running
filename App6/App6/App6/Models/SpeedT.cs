@@ -8,7 +8,7 @@ namespace App6.Models
     [Table("Speed")]
     public class SpeedT
     {
-        [PrimaryKey]
+        [PrimaryKey, Unique]
         public int ID { get; set; }
 
         public string AverageSpeed { get; set; }

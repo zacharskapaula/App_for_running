@@ -26,7 +26,7 @@ namespace App6.Models
         public DistanceT(Double startpointlat, Double startpointlong, Double stoppointlat, Double  stoppointlong, Double trainingdistance)
         {
             this.StartPointLat = startpointlat;
-            this.StartPointLat = startpointlat;
+            this.StartPointLat = startpointlong;
             this.StopPointLat = stoppointlat;
             this.StopPointLong = stoppointlong;
             this.TrainingDistance = trainingdistance;

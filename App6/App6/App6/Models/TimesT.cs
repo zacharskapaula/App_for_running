@@ -9,7 +9,7 @@ namespace App6.Models
     [Table("Time")]
     public class TimesT
     {
-        [PrimaryKey]
+        [PrimaryKey, Unique]
         public int ID { get; set; }
 
         public string StartTime { get; set; }
