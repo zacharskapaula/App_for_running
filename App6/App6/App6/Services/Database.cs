@@ -58,12 +58,15 @@ namespace App6
             return _database.InsertAsync(time);
         }
 
-
+        public Task<List<TimesT>> GetTimeAsync()
+        {
+            return _database.Table<TimesT>().ToListAsync();
+        }
 
         /******************************************************************************/
-        public Task<int> SaveDistanceAsync(DistanceT time)
+        public Task<int> SaveDistanceAsync(DistanceT distane)
         {
-            return _database.InsertAsync(time);
+            return _database.InsertAsync(distane);
         }
 
         public Task<List<DistanceT>> GetDistanceAsync()
