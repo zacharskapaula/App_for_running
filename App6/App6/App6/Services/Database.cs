@@ -23,7 +23,7 @@ namespace App6
             _database.CreateTableAsync<TimesT>();
             _database.CreateTableAsync<DistanceT>();
             _database.CreateTableAsync<SpeedT>();
-
+            _database.CreateTableAsync<Statistic>();
 
         }
 
@@ -44,14 +44,12 @@ namespace App6
 
             return database;
         }
-        /*******************************************************************************/
+        /****************************** TIME **********************************************/
 
         public List<TimesT> execute()
         {
             return _database.ExecuteScalarAsync<List<TimesT>>("select * from Time").Result;
         }
-
-        
 
         public Task<int> SaveTimeAsync(TimesT time)
         {
@@ -63,7 +61,13 @@ namespace App6
             return _database.Table<TimesT>().ToListAsync();
         }
 
-        /******************************************************************************/
+        public Task<int> DelateAllAsyncTime()
+        {
+            return _database.DeleteAllAsync<TimesT>();
+        }
+        
+
+        /******************************* DISTANCE *********************************************/
         public Task<int> SaveDistanceAsync(DistanceT distane)
         {
             return _database.InsertAsync(distane);
@@ -74,8 +78,12 @@ namespace App6
             return _database.Table<DistanceT>().ToListAsync();
         }
 
+        public Task<int> DelateAllAsyncDistance()
+        {
+            return _database.DeleteAllAsync<DistanceT>();
+        }
 
-        /******************************************************************************/
+        /********************************* SPEED *********************************************/
 
         public Task<int> SaveSpeedAsync(SpeedT time)
         {
@@ -85,6 +93,28 @@ namespace App6
         public Task<List<SpeedT>> GetSpeedAsync()
         {
             return _database.Table<SpeedT>().ToListAsync();
+        }
+
+        public Task<int> DelateAllAsyncSpeed()
+        {
+            return _database.DeleteAllAsync<SpeedT>();
+        }
+
+        /********************************* STATISTIC *********************************************/
+
+        public Task<int> SaveStatisticAsync(Statistic statistic)
+        {
+            return _database.InsertAsync(statistic);
+        }
+
+        public Task<List<Statistic>> GetStatisticAsync()
+        {
+            return _database.Table<Statistic>().ToListAsync();
+        }
+
+        public Task<int> DelateAllAsyncStatistic()
+        {
+            return _database.DeleteAllAsync<Statistic>();
         }
     }
 

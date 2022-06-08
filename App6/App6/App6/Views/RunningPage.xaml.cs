@@ -29,7 +29,6 @@ namespace App6.Views
     public partial class RunningPage : ContentPage
     {
         double update_distance;
-
         public RunningPage()
         {
             InitializeComponent(); 
@@ -44,8 +43,7 @@ namespace App6.Views
             {
               
             }
-            
- 
+
         };
         
         public void update_location(double x)
@@ -61,8 +59,6 @@ namespace App6.Views
             Xamarin.Forms.Maps.Position map_position = new Xamarin.Forms.Maps.Position(start_location.Latitude, start_location.Longitude);
             MapSpan mapSpan = MapSpan.FromCenterAndRadius(map_position, Xamarin.Forms.Maps.Distance.FromKilometers(0.5));
             mylocalMap.MoveToRegion(mapSpan);
-
-            //distanceLabel.Text = start_location.ToString();
 
             Pin pin_start = new Pin
             {
@@ -111,7 +107,6 @@ namespace App6.Views
             });
         }
     
-  
 
         Location finish_location;
         public async void GetStopLoc()
@@ -135,24 +130,17 @@ namespace App6.Views
             buttonRow.Height = 0;
             mapRow.Height = 260;
 
-            
-            Database db = Database.GetInstance();
-            string starttime = trainingStartTime.Text;
-            string stoptime = trainingStopTime.Text;
-            string hour = hourLabel.Text;
-            //await db.SaveTimeAsync(new TimesT(starttime, stoptime, hour));
-            double start_point_lat = start_location.Latitude;
-            double start_point_long = start_location.Longitude;
-            double stop_point_lat = finish_location.Latitude;
-            double stop_point_long = finish_location.Longitude;
-            double all_distance = distancet;
-
-            //Database db1 = Database.GetInstance();
-            //TrainingView.ItemsSource = await db.GetDistanceAsync();
-            await db.SaveDistanceAsync(new Models.DistanceT(start_point_lat, start_point_long, stop_point_lat, stop_point_long, all_distance));
-
         }
 
+        public async void DatabaseSave()
+        {
+            string starttime = trainingStartTime.Text;
+            string hour = hourLabel.Text;
+            string all_distance = distanceLabel.Text;
+            string advspeed = "10";
+            Database db = Database.GetInstance();
+            await db.SaveStatisticAsync(new Statistic(starttime, hour, distanceLabel.Text, advspeed));
+        }
 
         public void StartButton_Clicked(object sender, EventArgs e)
         {
@@ -177,7 +165,7 @@ namespace App6.Views
             
         }
  
-        public void StopButton_Clicked(object sender, EventArgs e)
+        public async void StopButton_Clicked(object sender, EventArgs e)
         {
             DateTime myDate = DateTime.Now;
             string thatTime = myDate.ToString();
@@ -195,8 +183,9 @@ namespace App6.Views
             welcomeLabel.IsVisible = false;
             TotalTime();
             GetStopLoc();
-            
-          
+            DatabaseSave();
+
+
         } 
 
         public  void TotalTime()
@@ -204,10 +193,6 @@ namespace App6.Views
             DateTime arg1 = DateTime.Parse(trainingStopTime.Text);
             DateTime arg2 = DateTime.Parse(trainingStartTime.Text);
             hourLabel.Text = (arg1 - arg2).ToString();
-
-            
-            //listView.ItemsSource = await db.GetTrainingAsync();
-
         }
   
     }
