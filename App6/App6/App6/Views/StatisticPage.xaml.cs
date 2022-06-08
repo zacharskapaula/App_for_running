@@ -28,10 +28,11 @@ namespace App6.Views
         {
             base.OnAppearing();
             Database db = Database.GetInstance();
-            //Database db1 = Database.GetInstance();
-            TrainingView.ItemsSource = await db.GetDistanceAsync();
+           
+            TrainingView.ItemsSource = await db.GetStatisticAsync();
             //await DisplayAlert("Uwaga", "Dystans", "ok");
             //TrainingView.ItemsSource = await db.GetTimeAsync();
+            //TrainingView.ItemsSource = await db.GetSpeedAsync();
 
             //binding dla kilku rzeczy na raz zeby wyswietlalo sie w jednym wierszu
         }

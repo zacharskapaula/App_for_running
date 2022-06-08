@@ -22,10 +22,12 @@
             <DataTemplate>
                 <ViewCell>
                     <StackLayout>
+                        <Grid>
                         <Label Grid.Column="0" Text="{Binding StartTime}"></Label> 
                         <Label Grid.Column="1" Text="{Binding TotalTime}"></Label>
                         <Label Grid.Column="2" Text="{Binding TrainingDistance}"></Label>
                         <Label Grid.Column="3" Text="{Binding AverageSpeed}"></Label>
+                        </Grid>
                     </StackLayout>
                 </ViewCell>
             </DataTemplate>
