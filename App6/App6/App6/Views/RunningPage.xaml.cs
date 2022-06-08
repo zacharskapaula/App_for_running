@@ -32,7 +32,6 @@ namespace App6.Views
         public RunningPage()
         {
             InitializeComponent(); 
-
         }
 
         Polyline polyline = new Polyline
@@ -43,13 +42,13 @@ namespace App6.Views
             {
               
             }
-
         };
         
         public void update_location(double x)
         {
             update_distance = update_distance + x;
             distanceLabel.Text = (Math.Round(update_distance, 2)).ToString() + "km";
+            //speedLabel.Text = (on_road_location.Speed).ToString();
         }
 
         Location start_location;
@@ -84,7 +83,8 @@ namespace App6.Views
             update_location(distance_on_road);
 
             start_location = on_road_location;
-            speedLabel.Text = (on_road_location.Speed).ToString();
+            speedLabel.Text = (Math.Round(Convert.ToDecimal(on_road_location.Speed*3.6), 2)).ToString() + "km/h";
+           
         }
         
 
@@ -137,7 +137,6 @@ namespace App6.Views
             string starttime = trainingStartTime.Text;
             string hour = hourLabel.Text;
             string all_distance = distanceLabel.Text;
-            //string advspeed = "10";
             Database db = Database.GetInstance();
             await db.SaveStatisticAsync(new Statistic(starttime, hour, distanceLabel.Text, speedLabel.Text));
            
@@ -161,7 +160,6 @@ namespace App6.Views
             GetStartLoc();
             RoadLocationEverySeconds();
             
-
             BindingContext = new TrainingTimer(); 
             
         }
