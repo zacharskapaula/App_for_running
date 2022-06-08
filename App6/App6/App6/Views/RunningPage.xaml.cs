@@ -84,7 +84,7 @@ namespace App6.Views
             update_location(distance_on_road);
 
             start_location = on_road_location;
-
+            speedLabel.Text = (on_road_location.Speed).ToString();
         }
         
 
@@ -137,9 +137,10 @@ namespace App6.Views
             string starttime = trainingStartTime.Text;
             string hour = hourLabel.Text;
             string all_distance = distanceLabel.Text;
-            string advspeed = "10";
+            //string advspeed = "10";
             Database db = Database.GetInstance();
-            await db.SaveStatisticAsync(new Statistic(starttime, hour, distanceLabel.Text, advspeed));
+            await db.SaveStatisticAsync(new Statistic(starttime, hour, distanceLabel.Text, speedLabel.Text));
+           
         }
 
         public void StartButton_Clicked(object sender, EventArgs e)
@@ -161,11 +162,11 @@ namespace App6.Views
             RoadLocationEverySeconds();
             
 
-            BindingContext = new TimerModel(); 
+            BindingContext = new TrainingTimer(); 
             
         }
  
-        public async void StopButton_Clicked(object sender, EventArgs e)
+        public void StopButton_Clicked(object sender, EventArgs e)
         {
             DateTime myDate = DateTime.Now;
             string thatTime = myDate.ToString();

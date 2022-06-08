@@ -9,7 +9,7 @@ using System.Runtime.CompilerServices;
 
 namespace App6
 {
-    public class TimerModel : INotifyPropertyChanged
+    public class TrainingTimer : INotifyPropertyChanged
     {
         Stopwatch stopwatch = new Stopwatch();
         private Timer time = new Timer();
@@ -77,7 +77,7 @@ namespace App6
         }
 
      
-        public TimerModel()
+        public TrainingTimer()
         {
             stopwatch.Start();
             HoursCounter = stopwatch.Elapsed.Hours.ToString();
