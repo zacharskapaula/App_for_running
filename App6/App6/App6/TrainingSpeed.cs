@@ -8,5 +8,9 @@ namespace App6
     public class TrainingSpeed
     {
 
+        public TrainingSpeed()
+        {
+
+        }
     }
 }
