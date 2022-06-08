@@ -116,6 +116,8 @@ namespace App6
         {
             return _database.DeleteAllAsync<Statistic>();
         }
+
+       
     }
 
 }

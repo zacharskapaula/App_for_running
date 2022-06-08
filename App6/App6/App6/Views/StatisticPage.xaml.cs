@@ -13,8 +13,6 @@ namespace App6.Views
 {
     public partial class StatisticPage : ContentPage
     {
-        //TrainingView.ItemSource = training;
-
 
         public StatisticPage()
         {
@@ -22,19 +20,13 @@ namespace App6.Views
   
         }
 
-        
-
         protected async override void OnAppearing()
         {
             base.OnAppearing();
             Database db = Database.GetInstance();
            
             TrainingView.ItemsSource = await db.GetStatisticAsync();
-            //await DisplayAlert("Uwaga", "Dystans", "ok");
-            //TrainingView.ItemsSource = await db.GetTimeAsync();
-            //TrainingView.ItemsSource = await db.GetSpeedAsync();
-
-            //binding dla kilku rzeczy na raz zeby wyswietlalo sie w jednym wierszu
+            
         }
     }
 }
